@@ -62,7 +62,7 @@ This hybrid approach fits the dynamic nature of research and software developmen
 ### Key Features:
 - **Work Visualization:** Tasks are managed via a Kanban board on GitHub Projects under title of: AML-Drug-Generation , with columns like Backlog, To Do, In Progress, and Done.
 - **Use 10-days sprints** (short-term cycles to complete specific tasks).
-- **Sprint Planning:** We hold weekly sprint planning meetings to prioritize tasks, set goals, and adjust workload. <br> At the start of each 2-week sprint, we plan which tasks to tackle.
+- **Sprint Planning:** We hold weekly sprint planning meetings to prioritize tasks, set goals, and adjust workload. <br> At the start of each 10-days sprint, we plan which tasks to tackle.
 - **Bi-weekly sprint review** Short Sunday and Tuesday check-ins meeting to synchronize, identify blockers, and align priorities.  
 - **WIP Limits:** We cap the number of ongoing tasks to maintain focus and avoid overload.  
 - **Continuous Improvement:** At the end of each sprint, we review progress and processes, adjusting practices for better efficiency.  
