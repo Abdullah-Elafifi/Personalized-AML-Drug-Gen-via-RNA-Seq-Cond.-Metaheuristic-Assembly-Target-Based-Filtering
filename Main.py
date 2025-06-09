@@ -13,7 +13,6 @@ from reportlab.pdfgen import canvas
 import gdown
 
 
-# Set OpenAI API Key
 openai.api_key = ("sk-proj-6bElcnRqmh3ABBMgcEPiaIpxwSPHS8v8PWsB"
                   "_uTPeIPMdX7iCB3PIkmEYP7I6RzY4XsNFSuUaWT3BlbkFJs-bRv0hwH1heht7N34"
                   "fyNusYfdLA1RDgJ9FNnkAHSbNjL9LCZL63QsA8H2wszvcl9pU5VS66wA")
