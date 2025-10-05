@@ -1,1 +1,16 @@
-#will be added
+pandas
+numpy
+seaborn
+matplotlib
+mygene
+sklearn
+json
+networkx
+os
+umap
+scipy
+math
+requests
+pyvista
+biotite
+PIL #Till the script of 09_...
