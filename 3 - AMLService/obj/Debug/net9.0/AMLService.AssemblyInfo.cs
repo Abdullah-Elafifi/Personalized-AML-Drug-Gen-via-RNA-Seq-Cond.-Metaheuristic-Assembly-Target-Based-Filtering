@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AMLService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92e3a180c9610c26f5462898ab31602e0f2c6c2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("AMLService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AMLService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

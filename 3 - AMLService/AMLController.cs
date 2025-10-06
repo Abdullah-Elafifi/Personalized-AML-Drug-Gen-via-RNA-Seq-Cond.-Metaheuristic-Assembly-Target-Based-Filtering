@@ -89,8 +89,23 @@ public class AMLController : Controller
     #endregion
 
     [Authorize(Roles = "User,Admin")]
-    [HttpPost("upload")]
-    public async Task<IActionResult> Submit([FromForm] AMLUserRequest? request)
+    [HttpPost("upload-mapped")]
+    public async Task<IActionResult> Submit([FromForm] AMLMappedUserRequest? request)
+    {
+        var x = await HandleAMlRequest(request);
+        if (x != null) return x;
+        var response = new AMLUserResponse()
+        {
+            StatusCode = 200,
+            Message = "File has been sent to processing queue",
+        };
+
+        return Ok(response);
+    }
+
+    [Authorize(Roles = "User,Admin")]
+    [HttpPost("upload-raw")]
+    public async Task<IActionResult> Submit([FromForm] AMLRawUserRequest? request)
     {
         var x = await HandleAMlRequest(request);
         if (x != null) return x;

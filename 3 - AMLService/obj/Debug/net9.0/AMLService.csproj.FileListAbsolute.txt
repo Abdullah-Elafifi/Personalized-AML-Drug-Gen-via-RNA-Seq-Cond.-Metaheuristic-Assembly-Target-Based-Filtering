@@ -542,3 +542,4 @@ C:\Users\dodo1\Desktop\GraduationProject\Sprints\Sprint5-6-7-8-9-10\Dockerizing\
 C:\Users\dodo1\Desktop\GraduationProject\Sprints\Sprint5-6-7-8-9-10\Dockerizing\3 - AMLService\obj\Debug\net9.0\AMLService.pdb
 C:\Users\dodo1\Desktop\GraduationProject\Sprints\Sprint5-6-7-8-9-10\Dockerizing\3 - AMLService\obj\Debug\net9.0\AMLService.genruntimeconfig.cache
 C:\Users\dodo1\Desktop\GraduationProject\Sprints\Sprint5-6-7-8-9-10\Dockerizing\3 - AMLService\obj\Debug\net9.0\ref\AMLService.dll
+C:\Users\dodo1\Desktop\GraduationProject\Sprints\Sprint5-6-7-8-9-10\Dockerizing\3 - AMLService\obj\Debug\net9.0\AMLService.sourcelink.json

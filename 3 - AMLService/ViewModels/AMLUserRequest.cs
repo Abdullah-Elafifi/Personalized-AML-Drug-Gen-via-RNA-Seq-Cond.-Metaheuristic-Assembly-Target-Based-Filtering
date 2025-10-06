@@ -2,9 +2,20 @@
 
 namespace AMLService;
 
-public class AMLUserRequest
+public abstract class AMLUserRequest
 {
-    public IFormFile CSVFile { get; set; }
-    // User Preferences To Be Added
-    public string Preferences { get; set; }
+    public int NumberOfBioMarkers { get; set; }
+    public bool EDA { get; set; } = true;
+    public string Normalization { get; set; } = "null";
+}
+
+public class AMLRawUserRequest : AMLUserRequest
+{
+    public IFormFile RawData { get; set; }
+    public IFormFile ExonData { get; set; } // Annotation Data
+}
+
+public class AMLMappedUserRequest : AMLUserRequest
+{
+    public IFormFile FullGeneExpression { get; set; }
 }
