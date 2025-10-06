@@ -1,0 +1,20 @@
+services:
+  python-worker:
+    build: .
+    container_name: python-worker
+    restart: always
+    environment:
+      - RABBITMQ_HOST=rabbitmq-server
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=admin
+      - RABBITMQ_PASSWORD=admin123
+    volumes:
+      - ./logs:/app/logs
+      - ./scripts:/app/scripts
+    command: python rabbitmq_utils.py
+    networks:
+      - rabbitmq-network
+
+networks:
+  rabbitmq-network:
+    external: true

@@ -1,0 +1,17 @@
+# Stage 1: Build - Used to build the application
+FROM mcr.microsoft.com/dotnet/sdk:9.0-noble AS build
+WORKDIR /app
+
+# Copy the project file and restore dependencies
+COPY *.csproj .
+RUN dotnet restore "AMLService.csproj"
+
+# Copy the remaining source code and build the application
+COPY . .
+RUN dotnet publish "AMLService.csproj" -c Release -o /app/publish
+
+# Stage 2: Runtime - The final, smaller image to run the application
+FROM  mcr.microsoft.com/dotnet/aspnet:9.0-noble AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "AMLService.dll"]

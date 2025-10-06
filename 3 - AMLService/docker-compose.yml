@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  aml_service:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: aml_service
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_URLS=http://+:5014
+      - ConnectionStrings__DefaultConnection=Server=sqlserver-amldb,1433;Database=AMLServiceDB;User ID=sa;Password=YourStrong!Pass123;TrustServerCertificate=True
+    ports:
+      - "5014:5014"
+    restart: always
+
+    networks:
+      - rabbitmq-network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-amldb
+    environment:
+      - SA_PASSWORD=YourStrong!Pass123
+      - ACCEPT_EULA=Y
+    ports:
+      - "1432:1433"
+    volumes:
+      - sqlserver-amldb:/var/opt/mssql
+    restart: always
+    networks:
+      - rabbitmq-network
+
+volumes:
+  sqlserver-amldb:
+
+networks:
+  rabbitmq-network:
+    external: true
