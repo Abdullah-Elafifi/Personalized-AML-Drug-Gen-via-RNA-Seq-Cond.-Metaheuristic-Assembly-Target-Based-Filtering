@@ -20,7 +20,7 @@ def fetch_alphafold(csv_file, out_dir="results/proteins_3d/structures"):
         # Avoid duplicate names (e.g., Q14314_Q14314 → Q14314)
         name = gene if gene != accession else accession
 
-        url = f"https://alphafold.ebi.ac.uk/files/AF-{accession}-F1-model_v4.pdb"
+        url = f"https://alphafold.ebi.ac.uk/files/AF-{accession}-F1-model_v6.pdb"
         save_path = os.path.join(out_dir, f"{name}.pdb")
 
         r = requests.get(url)
@@ -100,3 +100,4 @@ if __name__ == "__main__":
     report_df = fetch_alphafold(csv_input)  # Step 1
     render_proteins("results/proteins_3d/structure_fetch_report.csv")  # Step 2 (skipped)
     combine_images()  # Step 3
+
