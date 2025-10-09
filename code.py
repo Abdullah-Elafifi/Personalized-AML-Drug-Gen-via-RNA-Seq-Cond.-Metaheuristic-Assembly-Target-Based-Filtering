@@ -12,7 +12,36 @@ import nglview as nv
 import pandas as pd
 #from sklearn.preprocessing import MinMaxScaler
 import numpy as np
+"""
+dogsite_job['dogsite_info'] ->Points to the summary analysis object for the entire protein — not individual pockets.
+Contains quantitative pocket data for all detected pockets — things like:
+Volume
+Depth
+Enclosure
+Hydrophobicity
+Aromaticity
+Donor/acceptor counts
+etc.
+////////////////////////////////////////////////////////
+dogsite_job['output_pockets']->
+Comes directly from the job submission result (DOGSITE_JOBS).
+Contains IDs of each detected pocket.
+Each ID refers to a single pocket entry that you can query from
+---------------------------------------------------------------------------
+These endpoints focus on 3D structural details — like:
+Residues forming the pocket
+Atom coordinates
+Pocket geometry
+Visualization references
 
+
+
+
+
+
+
+
+"""
 PROTEINS_PLUS_URL = 'https://proteins.plus/api/v2/'
 UPLOAD = urljoin(PROTEINS_PLUS_URL, 'molecule_handler/upload/')
 UPLOAD_JOBS = urljoin(PROTEINS_PLUS_URL, 'molecule_handler/upload/jobs/')
@@ -87,35 +116,52 @@ dogsite_info = requests.get(DOGSITE_INFO + dogsite_job['dogsite_info'] + '/').js
 c=1
 
 
-scores=[]
+scores_pocket={}
 the_info=dogsite_info["info"]
+
 for key in dogsite_info:
     print("k is ",key,end="\n")
 print(dogsite_job.keys())
 print(dogsite_job['output_pockets'])
 
 
-first_pocket=dogsite_job['output_pockets'][0]
-site = requests.get(PROTEINSITES + first_pocket + '/').json()
-residues_first_pocket = site['site_description']['residue_ids']
-for i in residues_first_pocket:
-    print(i)
+
+the_info = dogsite_info["info"]
+pocket_ids = dogsite_job["output_pockets"]
+
+for pocket_data, pocket_id in zip(the_info, pocket_ids):
+    print(f"{pocket_data['name']} → {pocket_id}")
+    scores_pocket[pocket_id] = (
+    0.3 * float(pocket_data['volume']) +
+    0.2 * float(pocket_data['depth']) +
+    0.2 * float(pocket_data['enclosure']) * 100 +
+    0.1 * float(pocket_data['hydrophobicity']) * 100 +
+    0.1 * float(pocket_data['aromat']) +
+    0.1 * float(pocket_data['accept'] + pocket_data['donor']))
 
 
-for pocket in the_info:
-    print(f"{c}",pocket, end='\n')
-    scores.append((
-    0.3 * float(pocket['volume']) +
-    0.2 * float(pocket['depth']) +
-    0.2 * float(pocket['enclosure']) * 100 +
-    0.1 * float(pocket['hydrophobicity']) * 100 +
-    0.1 * float(pocket['aromat']) +
-    0.1 * float(pocket['accept'] + pocket['donor'])
-    ))
 
 
-min_score = min(scores)
-max_score = max(scores)
+sorted_scores = sorted(scores_pocket.items(), key=lambda x: x[1], reverse=True)
 
-normalized_scores = [(s - min_score) / (max_score - min_score) for s in scores]
-normalized_scores.sort(reverse=True)
+# Print sorted pockets with their scores
+
+
+min_score = min(scores_pocket.values())
+max_score = max(scores_pocket.values())
+
+# Normalize to 0–1
+if max_score == min_score:
+    normalized_scores = {pid: 1.0 for pid in scores_pocket}
+else:
+    normalized_scores = {
+        pid: (score - min_score) / (max_score - min_score)
+        for pid, score in scores_pocket.items()
+    }
+
+# Sort by normalized score (descending)
+sorted_norm = sorted(normalized_scores.items(), key=lambda x: x[1], reverse=True)
+
+# Print normalized scores
+for pid, score in sorted_norm:
+    print(f"{pid}: {score:.3f}")
