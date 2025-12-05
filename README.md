@@ -1,4 +1,4 @@
-# Personalized De Novo Acute Myeloid Leukemia (AML) Drug Generation via Transcriptome Conditioned Heuristic Assembly and Target-Driven Filtering
+# Transcriptome-Conditioned Personalized De Novo Drug Generation for AML Using Metaheuristic Assembly and Target-Driven Filtering 
 Nothing to say, we are just started!
 
 ##
