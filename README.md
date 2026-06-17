@@ -13,7 +13,7 @@
 [Overview](#overview) · [Pipeline](#pipeline) · [Installation](#installation) · [Usage](#usage) · [Results](#results) ·
 
 <p align="center">
-  <img src="figures/main.png" width="800"/>
+  <img src="figures/main.png" width="500"/>
   <br>
   <em>Figure 1: Schematic representation of the evolutionary algorithm for de novo ligand generation</em>
 </p>
