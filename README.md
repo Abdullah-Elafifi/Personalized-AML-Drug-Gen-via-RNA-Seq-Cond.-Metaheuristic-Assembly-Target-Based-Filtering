@@ -107,19 +107,17 @@ Raw TCGA-LAML RNA-seq Data
 │   │   └── structure_fetch_report.csv         # Download status per biomarker
 │   └── <pocket_stem>_ranked_ligands.csv       # Ranked ligands output
 │
-├── Biomarkers_results_graphs/                 # EDA figures for top 20 biomarkers
-│
-├── 01_load_data.py                            # Load raw TCGA expression + probeMap
-├── 02_exon_to_gene.py                         # Exon-to-gene aggregation (HUGO symbols)
-├── 03_filter_protein_coding.py                # Protein-coding biotype filter (mygene)
-├── 04_normalize_and_select_hvgs.py            # log2 normalization + HVG selection
-├── 05_coexpression_and_modules.py             # WGCNA adjacency, modules, kWithin ranking
-├── 06_EDA_for_the_filtered_genes.py           # EDA on filtered genes (PCA, UMAP, network)
-├── 07_rank_hubs_and_annotate.py               # Composite biomarker scoring + UniProt annotation
-├── 08_Biomarkers_EDA_1.py                     # Full EDA for top 20 biomarkers
-├── 09_fetch_structures.py                     # AlphaFold3 PDB retrieval via EBI API
-├── 09_viewing_proteins_old.py                 # PyVista point-cloud protein visualization
-├── Ligand_generator.py                        # ⭐ Core metaheuristic ligand generation engine
+├── scripts/
+│   ├── 01_load_data.py                            # Load raw TCGA expression + probeMap
+│   ├── 02_exon_to_gene.py                         # Exon-to-gene aggregation (HUGO symbols)
+│   ├── 03_filter_protein_coding.py                # Protein-coding biotype filter (mygene)
+│   ├── 04_normalize_and_select_hvgs.py            # log2 normalization + HVG selection
+│   ├── 05_coexpression_and_modules.py             # WGCNA adjacency, modules, kWithin ranking
+│   ├── 06_EDA_for_the_filtered_genes.py           # EDA on filtered genes (PCA, UMAP, network)
+│   ├── 07_rank_hubs_and_annotate.py               # Composite biomarker scoring + UniProt annotation
+│   ├── 08_Biomarkers_EDA_1.py                     # Full EDA for top 20 biomarkers
+│   ├── 09_fetch_structures.py                     # AlphaFold3 PDB retrieval via EBI API
+│   ├── Ligand_generator.py                        # ⭐ Core metaheuristic ligand generation engine
 ├── requirements.txt
 └── README.md
 ```
