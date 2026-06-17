@@ -15,7 +15,7 @@
 <p align="center">
   <img src="figures/main.png" width="800"/>
   <br>
-  <em>Figure 1: End-to-end pipeline for transcriptome-guided de novo drug design in AML.</em>
+  <em>Figure 1: Schematic representation of the evolutionary algorithm for de novo ligand generation</em>
 </p>
 
 
